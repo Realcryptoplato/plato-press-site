@@ -87,7 +87,7 @@ async function sendWelcomeEmail({ to, apiKey, from, replyTo }) {
   <li>Ninety-day timeline (whole-book overview)</li>
 </ul>
 
-<p>If a friend or family member could use the book in the meantime, the link is on Amazon: <a href="https://www.amazon.com/dp/PLACEHOLDER">The First 90 Days After a Parent Dies</a>.</p>
+<p>If a friend or family member could use the book in the meantime, the link is on Amazon: <a href="https://www.amazon.com/dp/B0H16535V3">The First 90 Days After a Parent Dies</a>.</p>
 
 <p>When the next field guide ships, I will send one short email. No marketing newsletters. Reply to this if anything in the book was wrong or unclear — I read every reply.</p>
 
@@ -105,7 +105,7 @@ The checklists are:
 - First-day phone call sheet (Chapter 1)
 - Ninety-day timeline (whole-book overview)
 
-The book is on Amazon: https://www.amazon.com/dp/PLACEHOLDER
+The book is on Amazon: https://www.amazon.com/dp/B0H16535V3
 
 When the next field guide ships, I will send one short email. No marketing newsletters. Reply if anything in the book was wrong or unclear — I read every reply.
 
