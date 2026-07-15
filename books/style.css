@@ -243,6 +243,11 @@ section p {
   margin-top: 8px;
 }
 
+.fine-print a {
+  color: var(--navy);
+  text-underline-offset: 3px;
+}
+
 /* Footer ---------------------------------------------- */
 
 footer {
