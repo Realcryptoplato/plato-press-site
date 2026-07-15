@@ -1,6 +1,6 @@
 # plato-press.com
 
-Landing page for **Plato Press**, a small imprint publishing practical field guides for adult-life events. The first book is *The First 90 Days After a Parent Dies* (Kindle).
+Website for **Plato Press**, an independent product studio. The homepage features Citizen Coach, while `/books/` preserves the original publishing imprint and *The First 90 Days After a Parent Dies*.
 
 ## Stack
 
@@ -15,15 +15,18 @@ Landing page for **Plato Press**, a small imprint publishing practical field gui
 
 ```
 plato-press-site/
-├── index.html              # single-page landing site
-├── style.css               # all CSS
+├── index.html              # studio homepage
+├── style.css               # studio and legal-page CSS
 ├── favicon.svg             # simple "P" wordmark favicon
-├── cover.jpg               # Book #1 cover (1600x2560, copy of plato-kdp-catalog/books/probate-90-days/cover/cover.jpg)
+├── assets/                 # studio social image and Citizen Coach feature image
+├── books/                  # publishing-imprint page and CSS
+├── privacy/                # privacy notice
+├── terms/                  # website terms
+├── cover.jpg               # Book #1 cover
 ├── functions/
 │   └── api/
 │       └── subscribe.js    # POST /api/subscribe — email signup endpoint
-└── public/
-    └── pdfs/               # printable checklists (TBD — placeholders until designed)
+└── _redirects              # canonical trailing-slash redirects
 ```
 
 ## Local development
@@ -53,7 +56,18 @@ REPLY_TO_EMAIL=hello@plato-press.com
 
 ## Deploy
 
-Cloudflare Pages auto-deploys on push to `main`. Configuration:
+Cloudflare Pages project: `plato-press-site`. The project is manually deployed and has no connected Git provider. A push to `main` does not deploy production.
+
+Deploy only a clean, reviewed `main` commit and include its exact SHA:
+
+```bash
+npx wrangler pages deploy . \
+  --project-name plato-press-site \
+  --branch main \
+  --commit-hash "$(git rev-parse HEAD)"
+```
+
+Configuration:
 
 - **Framework preset:** None
 - **Build command:** *(blank)*
@@ -72,20 +86,11 @@ Cloudflare Pages auto-deploys on push to `main`. Configuration:
 
 | Variable name | KV namespace |
 |---|---|
-| `SUBSCRIBERS` | Create a new KV namespace named `plato-press-subscribers` and bind it here |
+| `SUBSCRIBERS` | Existing `plato-press-subscribers` namespace |
 
-### DNS records to set in Cloudflare DNS
+### DNS safety
 
-| Type | Name | Content | Purpose |
-|---|---|---|---|
-| `A` or `CNAME` | `@` | (auto-created by Cloudflare Pages custom domain) | Site serving |
-| `CNAME` | `www` | `plato-press.com` | Redirect www → apex |
-| `MX` | `@` | (per Resend's setup) | Receive email (set by Resend's domain verification) |
-| `TXT` | `_dmarc` | (per Resend) | DMARC |
-| `TXT` | `resend._domainkey` | (per Resend) | DKIM |
-| `TXT` | `@` | (per Resend) | SPF |
-
-If migrating MX records from Namecheap, copy them verbatim from Resend's domain setup page.
+`plato-press.com` and `www.plato-press.com` are already attached to the existing Pages project. A normal site deploy requires no DNS changes. Preserve all Google Workspace mail, SPF, DKIM, DMARC, and transactional-email records, as well as the separate Citizen Coach and Calleja routes.
 
 ## Privacy
 
