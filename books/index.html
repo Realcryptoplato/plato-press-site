@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plato Press — Quiet field guides for the work that arrives without warning.</title>
+<meta name="description" content="Plato Press publishes practical field guides for adult-life events. Our first book, The First 90 Days After a Parent Dies, is a checklist guide for adult children navigating probate and estate settlement." />
+<meta name="robots" content="index, follow" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Plato Press — The First 90 Days After a Parent Dies" />
+<meta property="og:description" content="A checklist guide for adult children navigating probate and estate settlement." />
+<meta property="og:url" content="https://plato-press.com" />
+<meta property="og:image" content="https://plato-press.com/cover.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="/books/style.css" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <p class="wordmark">Plato Press</p>
+    <p class="tagline">Quiet field guides for the work that arrives without warning.</p>
+
+    <div class="book-block">
+      <img src="/cover.jpg" alt="Cover of The First 90 Days After a Parent Dies, a navy leather binder on a warm cream surface." class="book-cover" />
+      <div class="book-detail">
+        <h1 class="book-title">The First 90 Days After a Parent Dies</h1>
+        <p class="book-subtitle">An Adult Child's Checklist Guide to Probate and Estate Settlement</p>
+        <p class="book-author">by Jordan Hale</p>
+        <p class="book-blurb">If you are reading this, someone you love just died. You did not ask to become the executor. You are not a lawyer. You are reading this at 11pm because someone has to figure out what comes next. This book is the field guide.</p>
+        <div class="cta-row">
+          <a href="https://www.amazon.com/dp/B0H16535V3" class="btn btn-primary" rel="noopener">Buy on Amazon</a>
+          <a href="#printables" class="btn btn-secondary">Get the free printable checklists</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="about">
+  <div class="container">
+    <h2>About the author and the imprint</h2>
+    <p>Jordan Hale comes from a tech and philosophy background. The book grew out of a personal project — stepping in to help a family member with Alzheimer's manage accounting, paperwork, and estate planning before the disease made the work too hard to share. What that project revealed was that the legal and administrative side of supporting an aging parent — and eventually settling an estate — is one of the most disorienting things adult children ever do.</p>
+    <p>Plato Press is a small imprint with one working principle: <strong>be useful</strong>. Books here are short, plain-spoken, and built around the moment a reader is actually in — not the moment someone calmer might be in later.</p>
+  </div>
+</section>
+
+<section class="printables" id="printables">
+  <div class="container">
+    <h2>Free printable checklists from <em>The First 90 Days</em></h2>
+    <p class="section-lede">Print these for the kitchen counter. They are the load-bearing tools from the book, formatted to be useful at 3am when nothing is.</p>
+
+    <ul class="printable-list">
+      <li><strong>Ten-document baseline</strong> — the documents every estate needs, in the order they get asked for</li>
+      <li><strong>Five-document institution packet</strong> — what every bank and brokerage will require</li>
+      <li><strong>First-day phone call sheet</strong> — the three calls in the right sequence</li>
+      <li><strong>Ninety-day timeline</strong> — the whole-book overview on one page</li>
+    </ul>
+
+    <form class="signup-form" id="signup-form" novalidate>
+      <label for="email" class="sr-only">Your email</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+      <button type="submit">Send the printables</button>
+      <p class="form-note" id="form-note" aria-live="polite"></p>
+    </form>
+
+    <p class="fine-print">No newsletters about marketing. No upsells. One quiet email if the next book ships or the checklists get updated.</p>
+  </div>
+</section>
+
+<section class="updates">
+  <div class="container">
+    <h2>What's next</h2>
+    <p>The next field guide is in early planning. Subjects on the list include caregiving in the first thirty days after a dementia diagnosis, and the first-year tax survival kit for new freelancers. If you subscribed above, you will hear when one ships.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Plato Press · Written under the pen name Jordan Hale</p>
+    <p><a href="mailto:hello@plato-press.com">hello@plato-press.com</a></p>
+    <p class="privacy">This site does not track you. No analytics beyond Cloudflare's anonymous request counts.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const form = document.getElementById('signup-form');
+const note = document.getElementById('form-note');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  if (!email || !email.includes('@')) {
+    note.textContent = 'Please enter a valid email address.';
+    note.className = 'form-note error';
+    return;
+  }
+
+  note.textContent = 'Sending…';
+  note.className = 'form-note pending';
+
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    });
+    if (res.ok) {
+      note.textContent = 'Check your inbox. The printables are on their way.';
+      note.className = 'form-note success';
+      form.reset();
+    } else {
+      const data = await res.json().catch(() => ({}));
+      note.textContent = data.error || 'Something went wrong. Try again in a minute.';
+      note.className = 'form-note error';
+    }
+  } catch (err) {
+    note.textContent = 'Network error. Try again in a minute.';
+    note.className = 'form-note error';
+  }
+});
+</script>
+
+</body>
+</html>
