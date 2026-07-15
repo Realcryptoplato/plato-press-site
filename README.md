@@ -90,7 +90,7 @@ Configuration:
 
 ### DNS safety
 
-`plato-press.com` and `www.plato-press.com` are already attached to the existing Pages project. A normal site deploy requires no DNS changes. Preserve all Google Workspace mail, SPF, DKIM, DMARC, and transactional-email records, as well as the separate Citizen Coach and Calleja routes.
+`plato-press.com` and `www.plato-press.com` are already attached to the existing Pages project. `www.plato-press.com` is canonical; `functions/_middleware.js` redirects exact apex requests to `www` with HTTP 308 while preserving the path, query string, and request method. A normal site deploy requires no DNS changes. Preserve all Google Workspace mail, SPF, DKIM, DMARC, and transactional-email records, as well as the separate Citizen Coach and Calleja routes.
 
 ## Privacy
 
