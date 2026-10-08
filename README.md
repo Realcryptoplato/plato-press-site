@@ -1,6 +1,6 @@
 # plato-press.com
 
-Website for **Plato Press**, an independent press and bookseller in Palo Alto. The homepage leads with vintage Japanese ikebana and art books, woodblock prints, and the Calleja editions. Citizen Coach stays linked at `#citizen-coach`.
+Website for **Plato Press**, an independent press and bookseller in Palo Alto. The homepage leads with the shelves. `/books/` is the catalog of what is actually listed: four vintage flower-arrangement books on Etsy, and the Calleja paperbacks on Amazon. Citizen Coach stays linked at `#citizen-coach`.
 
 ## Stack
 
