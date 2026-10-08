@@ -1,6 +1,6 @@
 # plato-press.com
 
-Website for **Plato Press**, an independent product studio. The homepage features Citizen Coach, while `/books/` preserves the original publishing imprint and *The First 90 Days After a Parent Dies*.
+Website for **Plato Press**, an independent press and product studio in Palo Alto. The homepage features Citizen Coach and the books catalog. `/books/` lists vintage Japanese ikebana and Asian art books, Japanese woodblock prints, and Plato Press paperback editions of the Calleja tales.
 
 ## Stack
 
@@ -19,10 +19,11 @@ plato-press-site/
 ├── style.css               # studio and legal-page CSS
 ├── favicon.svg             # simple "P" wordmark favicon
 ├── assets/                 # studio social image and Citizen Coach feature image
-├── books/                  # publishing-imprint page and CSS
+├── books/                  # books catalog
+├── shop-links.js           # publishes AbeBooks/Etsy buttons when data-shop-url is set
 ├── privacy/                # privacy notice
 ├── terms/                  # website terms
-├── cover.jpg               # Book #1 cover
+├── cover.jpg               # earlier cover image, not used by the current pages
 ├── functions/
 │   └── api/
 │       └── subscribe.js    # POST /api/subscribe — email signup endpoint
@@ -92,9 +93,13 @@ Configuration:
 
 `plato-press.com` and `www.plato-press.com` are already attached to the existing Pages project. `www.plato-press.com` is canonical; `functions/_middleware.js` redirects exact apex requests to `www` with HTTP 308 while preserving the path, query string, and request method. A normal site deploy requires no DNS changes. Preserve all Google Workspace mail, SPF, DKIM, DMARC, and transactional-email records, as well as the separate Citizen Coach and Calleja routes.
 
+## Books catalog
+
+`/books/` and the homepage Books section list what Plato Press sells and publishes. AbeBooks and Etsy buttons stay labeled “Coming soon” until a real shop URL is pasted into `data-shop-url` on each button. `shop-links.js` turns that button into a link only when the value is an `https://` URL.
+
 ## Privacy
 
-This site does not track. No analytics scripts. No cookies set. The form submission posts only the user's email to a Cloudflare Pages Function, which stores it in Cloudflare KV and triggers one welcome email via Resend. Cloudflare's standard anonymous request counters are the only request-level telemetry.
+This site does not track. No analytics scripts. No cookies set. The public pages do not include an email form. `functions/api/subscribe.js` remains from an earlier books page: a POST still stores an address in Cloudflare KV and can send one email via Resend. Cloudflare's standard anonymous request counters are the only request-level telemetry.
 
 ## License
 
