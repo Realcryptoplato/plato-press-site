@@ -1,7 +1,8 @@
 /* Marketplace buttons.
    Leave data-shop-url empty: the control stays visible as "Coming soon" and is not a link.
-   Paste a real https URL (AbeBooks or Etsy shop) into data-shop-url to publish it.
-   Do not invent a store URL. */
+   Paste a real https shop URL into data-shop-url to publish it.
+   AbeBooks is still empty. Etsy is a normal link to the shop home in the HTML.
+   Do not invent a store URL, and do not link individual Etsy listings. */
 (function () {
   var nodes = document.querySelectorAll("[data-shop-url]");
   for (var i = 0; i < nodes.length; i++) {

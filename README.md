@@ -1,6 +1,6 @@
 # plato-press.com
 
-Website for **Plato Press**, an independent press and product studio in Palo Alto. The homepage features Citizen Coach and the books catalog. `/books/` lists vintage Japanese ikebana and Asian art books, Japanese woodblock prints, and Plato Press paperback editions of the Calleja tales.
+Website for **Plato Press**, an independent press and bookseller in Palo Alto. The homepage leads with vintage Japanese ikebana and art books, woodblock prints, and the Calleja editions. Citizen Coach stays linked at `#citizen-coach`.
 
 ## Stack
 
@@ -95,7 +95,7 @@ Configuration:
 
 ## Books catalog
 
-`/books/` and the homepage Books section list what Plato Press sells and publishes. AbeBooks and Etsy buttons stay labeled “Coming soon” until a real shop URL is pasted into `data-shop-url` on each button. `shop-links.js` turns that button into a link only when the value is an `https://` URL.
+`/books/` and the homepage list what Plato Press sells and publishes. Etsy links to the shop home, `https://platopressbooks.etsy.com`, not to individual listings. AbeBooks stays labeled “Coming soon” until a real shop URL is pasted into `data-shop-url`. `shop-links.js` turns that control into a link only when the value is an `https://` URL.
 
 ## Privacy
 
