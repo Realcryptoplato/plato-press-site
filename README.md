@@ -1,6 +1,6 @@
 # plato-press.com
 
-Website for **Plato Press**, an independent press and bookseller in Palo Alto. The homepage leads with the shelves. `/books/` is the catalog of what is actually listed: four vintage flower-arrangement books on Etsy, and the Calleja paperbacks on Amazon. Citizen Coach stays linked at `#citizen-coach`.
+Website for **Plato Press**, an independent press and bookseller in Palo Alto. The homepage leads with the shelves. `/books/` lists the full Plato Press Books catalog from `books/catalog.json`, grouped by category, with cover thumbnails. Citizen Coach stays linked at `#citizen-coach`.
 
 ## Stack
 
@@ -18,8 +18,9 @@ plato-press-site/
 ├── index.html              # studio homepage
 ├── style.css               # studio and legal-page CSS
 ├── favicon.svg             # simple "P" wordmark favicon
-├── assets/                 # studio social image and Citizen Coach feature image
-├── books/                  # books catalog
+├── assets/                 # brand image, Citizen Coach photo, and catalog thumbnails
+│   └── books/thumbs/       # cover thumbnails
+├── books/                  # catalog page and books/catalog.json
 ├── shop-links.js           # publishes AbeBooks/Etsy buttons when data-shop-url is set
 ├── privacy/                # privacy notice
 ├── terms/                  # website terms
@@ -95,7 +96,7 @@ Configuration:
 
 ## Books catalog
 
-`/books/` and the homepage list what Plato Press sells and publishes. Etsy links to the shop home, `https://platopressbooks.etsy.com`, not to individual listings. AbeBooks stays labeled “Coming soon” until a real shop URL is pasted into `data-shop-url`. `shop-links.js` turns that control into a link only when the value is an `https://` URL.
+`/books/` renders every title in `books/catalog.json`. Available titles link to their Etsy listing in a new tab. A title with `sold: true` shows a Sold badge and is not a buy link. Cover images live in `assets/books/thumbs/`. The homepage Etsy button still goes to the shop home, `https://platopressbooks.etsy.com`. AbeBooks stays labeled “Coming soon” until a real shop URL is pasted into `data-shop-url`. `shop-links.js` turns that control into a link only when the value is an `https://` URL.
 
 ## Privacy
 
