@@ -1,9 +1,9 @@
 /**
  * POST /api/subscribe
  *
- * Accepts { email } from the landing-page form. Sends a welcome email via
- * Resend with the four printable PDFs (or placeholder text until PDFs are
- * designed). Stores the email in Cloudflare KV for future newsletter sends.
+ * Accepts { email } from a plato-press.com page (other origins get 403),
+ * stores it in Cloudflare KV, and sends a short generic Plato Press welcome
+ * email via Resend.
  *
  * Environment variables (set in Cloudflare Pages → Settings → Environment):
  *   RESEND_API_KEY              - Resend API key with sending permission
@@ -16,6 +16,12 @@
 
 export async function onRequestPost(context) {
   const { request, env } = context;
+
+  // Only Plato Press pages may post here, so this endpoint can't be used
+  // as a signup backend by any other site or brand.
+  if (!isAllowedOrigin(request)) {
+    return json({ error: "Not allowed." }, 403);
+  }
 
   try {
     const body = await request.json().catch(() => null);
@@ -33,13 +39,13 @@ export async function onRequestPost(context) {
       const record = {
         email,
         subscribedAt: new Date().toISOString(),
-        source: "plato-press.com/printables",
+        source: "plato-press.com",
       };
       // Best-effort write — if KV fails we still send the email
       await env.SUBSCRIBERS.put(`subscriber:${email}`, JSON.stringify(record)).catch(() => {});
     }
 
-    // Send welcome email via Resend
+    // Send the generic Plato Press welcome via Resend
     const resendResponse = await sendWelcomeEmail({
       to: email,
       apiKey: env.RESEND_API_KEY,
@@ -60,6 +66,19 @@ export async function onRequestPost(context) {
   }
 }
 
+function isAllowedOrigin(request) {
+  const allowed = new Set(["https://www.plato-press.com", "https://plato-press.com"]);
+  const origin = request.headers.get("Origin");
+  if (origin) return allowed.has(origin);
+  const referer = request.headers.get("Referer");
+  if (!referer) return false;
+  try {
+    return allowed.has(new URL(referer).origin);
+  } catch {
+    return false;
+  }
+}
+
 function isValidEmail(s) {
   // Simple, intentionally permissive. Strict validation belongs at the email-provider side.
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s) && s.length <= 254;
@@ -74,43 +93,18 @@ function json(data, status = 200) {
 
 async function sendWelcomeEmail({ to, apiKey, from, replyTo }) {
   const html = `
-<p>Thanks for signing up.</p>
+<p>Thanks for joining Plato Press.</p>
 
-<p>The four printable checklists from <em>The First 90 Days After a Parent Dies</em> are still in design. They will be ready within two weeks of the book's launch, and I will email you the moment they are live — no new action needed from you.</p>
+<p>We'll send you a short note when new books are released. In the meantime, you can see everything we publish at <a href="https://www.plato-press.com/books">plato-press.com/books</a>.</p>
 
-<p>The checklists are:</p>
+<p>— Plato Press</p>
+`.trim();
 
-<ul>
-  <li>Ten-document baseline (Chapter 3)</li>
-  <li>Five-document institution packet (Chapter 5)</li>
-  <li>First-day phone call sheet (Chapter 1)</li>
-  <li>Ninety-day timeline (whole-book overview)</li>
-</ul>
+  const text = `Thanks for joining Plato Press.
 
-<p>If a friend or family member could use the book in the meantime, the link is on Amazon: <a href="https://www.amazon.com/dp/B0H16535V3">The First 90 Days After a Parent Dies</a>.</p>
+We'll send you a short note when new books are released. In the meantime, you can see everything we publish at https://www.plato-press.com/books
 
-<p>When the next field guide ships, I will send one short email. No marketing newsletters. Reply to this if anything in the book was wrong or unclear — I read every reply.</p>
-
-<p>— Jordan Hale<br/>Plato Press</p>
-`;
-
-  const text = `
-Thanks for signing up.
-
-The four printable checklists from The First 90 Days After a Parent Dies are still in design. They will be ready within two weeks of the book's launch, and I will email you the moment they are live — no new action needed from you.
-
-The checklists are:
-- Ten-document baseline (Chapter 3)
-- Five-document institution packet (Chapter 5)
-- First-day phone call sheet (Chapter 1)
-- Ninety-day timeline (whole-book overview)
-
-The book is on Amazon: https://www.amazon.com/dp/B0H16535V3
-
-When the next field guide ships, I will send one short email. No marketing newsletters. Reply if anything in the book was wrong or unclear — I read every reply.
-
-— Jordan Hale
-Plato Press
+— Plato Press
 `;
 
   return fetch("https://api.resend.com/emails", {
@@ -123,7 +117,7 @@ Plato Press
       from,
       to: [to],
       reply_to: replyTo,
-      subject: "The printable checklists from The First 90 Days",
+      subject: "Thanks for joining Plato Press",
       html,
       text,
     }),
