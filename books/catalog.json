@@ -17,7 +17,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591448274",
   "thumb": "4591448274.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "wood-flower-arrangement-art-of-japan/06-7EAAAeSwQ6JqwwRI.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -28,7 +28,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591437431",
   "thumb": "4591437431.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "murakami-moribana-heikwa-1936/01-WQMAAeSwe35qwwOf.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -260,13 +260,25 @@
   "etsy_title": "Ikenobo Free Style 1 Ikebana Card Book by Yuchiku Fujiwara 1971 - Vintage Japanese Flower Arrangement"
  },
  {
+  "id": "misho-ryu-soka-album",
+  "title": "Misho-ryu Soka Album Japanese Ikebana Flower Arrangement Plates",
+  "price": 349.99,
+  "thumb": "misho-ryu-soka-album.jpg",
+  "category": "Japanese books",
+  "etsy_section": "Ikebana & Flower Books",
+  "sold": false,
+  "source_photo": "01.jpg",
+  "ebay_url": "https://www.ebay.com/itm/307258187965",
+  "biblio_url": "https://www.biblio.com/details.php?dcx=1799176365&view=1"
+ },
+ {
   "id": "4591577270",
   "title": "Leaves and Flowers: Plant Studies for Young Readers — Mary Spear, 1896",
   "price": 14.5,
   "etsy_url": "https://www.etsy.com/listing/4591577270",
   "thumb": "4591577270.jpg",
   "category": "Rare & antique",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/spear-leaves-and-flowers/01-cover.jpg",
   "etsy_section": "Japanese Gardens & Other"
  },
