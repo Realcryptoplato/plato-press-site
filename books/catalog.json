@@ -6,7 +6,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591432913",
   "thumb": "4591432913.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "sato-art-of-arranging-flowers/02-cjQAAeSw1MJqwwCk.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -17,7 +17,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591448274",
   "thumb": "4591448274.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "wood-flower-arrangement-art-of-japan/06-7EAAAeSwQ6JqwwRI.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -28,7 +28,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591437431",
   "thumb": "4591437431.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "murakami-moribana-heikwa-1936/01-WQMAAeSwe35qwwOf.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -50,7 +50,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591571670",
   "thumb": "4591571670.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/koehn-the-art-of-japanese-flower-arrangement/06-cover.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -105,7 +105,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591574666",
   "thumb": "4591574666.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/nishikawa-floral-art-of-japan-tl11-maruzen-1936/10-cover-solo.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -160,7 +160,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591576624",
   "thumb": "4591576624.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/herrigel-zen-in-the-art-of-flower-arrangement/20-cover-maroon-jacket-from-group-no-glare.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -171,7 +171,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591576970",
   "thumb": "4591576970.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/herrigel-zen-in-the-art-of-flower-arrangement/11-cover-orange-paperback.jpg",
   "etsy_section": "Ikebana & Flower Books"
  },
@@ -260,13 +260,26 @@
   "etsy_title": "Ikenobo Free Style 1 Ikebana Card Book by Yuchiku Fujiwara 1971 - Vintage Japanese Flower Arrangement"
  },
  {
+  "id": "misho-ryu-soka-album",
+  "title": "Misho-ryu Soka Album Japanese Ikebana Flower Arrangement Plates",
+  "price": 349.99,
+  "etsy_url": "https://www.etsy.com/listing/4607411117/misho-ryu-soka-album-japanese-ikebana",
+  "thumb": "misho-ryu-soka-album.jpg",
+  "category": "Japanese books",
+  "etsy_section": "Ikebana & Flower Books",
+  "sold": true,
+  "source_photo": "01.jpg",
+  "ebay_url": "https://www.ebay.com/itm/307258187965",
+  "biblio_url": "https://www.biblio.com/details.php?dcx=1799176365&view=1"
+ },
+ {
   "id": "4591577270",
   "title": "Leaves and Flowers: Plant Studies for Young Readers — Mary Spear, 1896",
   "price": 14.5,
   "etsy_url": "https://www.etsy.com/listing/4591577270",
   "thumb": "4591577270.jpg",
   "category": "Rare & antique",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/spear-leaves-and-flowers/01-cover.jpg",
   "etsy_section": "Japanese Gardens & Other"
  },
@@ -277,7 +290,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591577642",
   "thumb": "4591577642.jpg",
   "category": "Japanese books",
-  "sold": false,
+  "sold": true,
   "source_photo": "shoot-2026-10-08/tatsui-japanese-gardens/01-jacket-front.jpg",
   "etsy_section": "Japanese Gardens & Other"
  },
@@ -310,7 +323,7 @@
   "etsy_url": "https://www.etsy.com/listing/4591568307",
   "thumb": "4591568307.jpg",
   "category": "Rare & antique",
-  "sold": false,
+  "sold": true,
   "source_photo": "high-value/mustard-seed-garden-jieziyuan-huazhuan/01-case.jpg",
   "etsy_section": "Rare & Antique"
  },

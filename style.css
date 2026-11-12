@@ -53,6 +53,10 @@ a.book-card:hover .edition-go{color:var(--accent)}
 .book-card .edition-go{margin-top:auto;padding-top:14px}
 .sold-badge{position:absolute;top:12px;left:12px;padding:5px 8px;background:var(--navy);color:var(--cream);font-size:11px;font-weight:700;letter-spacing:.02em;line-height:1}
 .book-card.is-sold .book-cover img{opacity:.72}
+.book-card .edition-links{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:auto;padding-top:14px}
+.book-card .edition-links .edition-go{margin-top:0;padding-top:0;text-decoration:none}
+.book-card .edition-links a.edition-go:hover{color:var(--accent)}
+article.book-card:has(a):hover{border-color:var(--navy)}
 .catalog-group{scroll-margin-top:16px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1100px){.book-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
